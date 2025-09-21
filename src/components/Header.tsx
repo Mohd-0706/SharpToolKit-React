@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Moon, Sun, Menu, X, Zap } from 'lucide-react';
+import React, { useState } from 'react';
+import { Moon, Sun, Menu, X } from 'lucide-react';
 
 interface HeaderProps {
   darkMode: boolean;
@@ -40,7 +40,9 @@ const Header: React.FC<HeaderProps> = ({ darkMode, setDarkMode, activeSection, s
             className="flex items-center space-x-2 cursor-pointer"
             onClick={() => scrollToSection('home')}
           >
-            <img src="/logo.png" alt="Sharp Toolkit" className="h-8 w-8" />
+            <div className="h-8 w-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-lg">S</span>
+            </div>
             <span className={`font-bold text-xl ${darkMode ? 'text-white' : 'text-gray-900'}`}>
               Sharp Toolkit
             </span>

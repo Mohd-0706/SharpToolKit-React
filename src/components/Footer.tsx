@@ -1,5 +1,5 @@
 import React from 'react';
-import { Mail, Github, Twitter, Heart, Zap } from 'lucide-react';
+import { Mail, Github, Twitter, Heart } from 'lucide-react';
 
 interface FooterProps {
   darkMode: boolean;
@@ -43,11 +43,13 @@ const Footer: React.FC<FooterProps> = ({ darkMode, setActiveSection }) => {
     <footer className={`${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} border-t`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
           {/* Brand Section */}
-          <div className="lg:col-span-1">
+          <div className="md:col-span-2 lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <img src="/logo.png" alt="Sharp Toolkit" className="h-8 w-8" />
+              <div className="h-8 w-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">S</span>
+              </div>
               <span className={`font-bold text-xl ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                 Sharp Toolkit
               </span>

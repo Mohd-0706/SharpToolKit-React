@@ -2,7 +2,7 @@ import React from 'react';
 import { DivideIcon as LucideIcon } from 'lucide-react';
 
 interface ToolCardProps {
-  icon: LucideIcon;
+  icon: typeof LucideIcon; 
   title: string;
   description: string;
   darkMode: boolean;
