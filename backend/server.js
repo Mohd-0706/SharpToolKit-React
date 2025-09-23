@@ -11,7 +11,7 @@ app.use(cors({
   origin: [
     "http://localhost:5173",          // Vite dev
     "http://localhost:3000",          // CRA dev
-    "https://your-frontend.vercel.app" // deployed frontend
+    "https://sharp-tools.netlify.app/" // deployed frontend
   ],
   methods: ["GET", "POST"],
 }));
