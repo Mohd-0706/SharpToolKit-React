@@ -7,6 +7,26 @@ interface ImageToolsProps {
 }
 
 const ImageTools: React.FC<ImageToolsProps> = ({ darkMode }) => {
+  // Define tool routes/URLs
+  const toolRoutes: Record<string, string> = {
+    'Resize Image': '/tools/convert-from-pdf/pdf-to-word',
+    'Compress Image': '/tools/image/compress',
+    'Crop Image': '/tools/image/crop',
+    'Convert Format': '/tools/image/convert',
+    'Rotate Image': '/tools/image/rotate',
+    'Apply Filters': '/tools/image/filters',
+    'Adjust Contrast': '/tools/image/contrast',
+    'Brightness Control': '/tools/image/brightness',
+    'Color Correction': '/tools/image/color-correction',
+    'Remove Background': '/tools/image/remove-background',
+    'Create Collage': '/tools/image/collage',
+    'Watermark': '/tools/image/watermark',
+    'Image Viewer': '/tools/image/viewer',
+    'Batch Upload': '/tools/image/batch-upload',
+    'Bulk Download': '/tools/image/bulk-download',
+    'Image Editor': '/tools/image/editor'
+  };
+
   const imageTools = [
     {
       icon: Resize,
@@ -101,7 +121,15 @@ const ImageTools: React.FC<ImageToolsProps> = ({ darkMode }) => {
   };
 
   const handleToolClick = (toolTitle: string) => {
-    alert(`Opening ${toolTitle} - This would open the tool interface in a real application.`);
+    const route = toolRoutes[toolTitle];
+    if (route) {
+      // For a real application, you would use your routing method here
+      // For example, with React Router: navigate(route);
+      // For this example, we'll simulate navigation
+      window.location.href = route;
+    } else {
+      console.warn(`No route defined for tool: ${toolTitle}`);
+    }
   };
 
   return (

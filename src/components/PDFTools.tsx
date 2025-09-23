@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FileText, Scissors, Merge, RotateCw, Lock, Unlock, Image, FileImage, Compass as Compress, Edit3, Search, Bookmark } from 'lucide-react';
 import ToolCard from './ToolCard';
 
@@ -7,10 +8,28 @@ interface PDFToolsProps {
 }
 
 const PDFTools: React.FC<PDFToolsProps> = ({ darkMode }) => {
+  const navigate = useNavigate();
+
+  // Define tool routes/URLs
+  const toolRoutes: Record<string, string> = {
+    'PdfSplit': '/tools/pdf/pdfsplit',
+    'Merge PDF': '/tools/pdf/merge',
+    'Compress PDF': '/tools/pdf/compress',
+    'Protect PDF': '/tools/pdf/protect',
+    'Unlock PDF': '/tools/pdf/unlock',
+    'Rotate PDF': '/tools/pdf/rotate',
+    'PDF to Images': '/tools/pdf/to-images',
+    'Images to PDF': '/tools/pdf/from-images',
+    'Edit PDF': '/tools/pdf/edit',
+    'Extract Text': '/tools/pdf/extract-text',
+    'Add Bookmarks': '/tools/pdf/bookmarks',
+    'PDF Converter': '/tools/pdf/converter'
+  };
+
   const pdfTools = [
     {
       icon: Scissors,
-      title: 'Split PDF',
+      title: 'PdfSplit',
       description: 'Extract pages or split your PDF into multiple documents with precision.',
       featured: true
     },
@@ -74,8 +93,12 @@ const PDFTools: React.FC<PDFToolsProps> = ({ darkMode }) => {
   ];
 
   const handleToolClick = (toolTitle: string) => {
-    // In a real application, this would navigate to the specific tool
-    alert(`Opening ${toolTitle} - This would open the tool interface in a real application.`);
+    const route = toolRoutes[toolTitle];
+    if (route) {
+      navigate(route);
+    } else {
+      console.warn(`No route defined for tool: ${toolTitle}`);
+    }
   };
 
   return (
