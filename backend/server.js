@@ -4,13 +4,20 @@ import { PDFDocument } from "pdf-lib";
 import cors from "cors";
 
 const app = express();
-const upload = multer(); // memory storage
+const upload = multer(); // in-memory file upload
 
-// Enable CORS for frontend*
-app.use(cors());
+// ✅ CORS (allow React frontend on Vercel/Netlify/localhost)
+app.use(cors({
+  origin: [
+    "http://localhost:5173",          // Vite dev
+    "http://localhost:3000",          // CRA dev
+    "https://your-frontend.vercel.app" // deployed frontend
+  ],
+  methods: ["GET", "POST"],
+}));
 app.use(express.json());
 
-// POST /split endpoint
+// ✅ POST /split endpoint
 app.post("/split", upload.single("file"), async (req, res) => {
   try {
     if (!req.file) return res.status(400).send("No PDF uploaded");
@@ -41,10 +48,11 @@ app.post("/split", upload.single("file"), async (req, res) => {
     res.setHeader("Content-Disposition", "attachment; filename=split.pdf");
     res.send(Buffer.from(pdfBytes));
   } catch (err) {
-    console.error("Error splitting PDF:", err);
+    console.error("❌ Error splitting PDF:", err);
     res.status(500).send("Error processing PDF");
   }
 });
 
-const PORT = 3000;
+// ✅ Render provides PORT dynamically
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`✅ Server running at http://localhost:${PORT}`));
