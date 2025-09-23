@@ -45,7 +45,7 @@ const PdfSplit: React.FC<{ darkMode: boolean }> = ({ darkMode }) => {
       formData.append("file", selectedFile);
       formData.append("pages", pages);
 
-      const response = await fetch("https://sharp-tools-react.onrender.com/split", {
+      const response = await fetch("https://sharp-tools-react.onrender.com/", {
         method: "POST",
         body: formData,
       });
