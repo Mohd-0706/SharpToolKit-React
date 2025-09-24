@@ -1,60 +1,78 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import PDFTools from './components/PDFTools';
-import ImageTools from './components/ImageTools';
-import Footer from './components/Footer';
-import { useDarkMode } from './hooks/useDarkMode';
-import { useActiveSection } from './hooks/useActiveSection';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-// Import PDF tool components
-import PdfSplit from './components/tools/pdf/pdfsplit';
+// Layout components
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import PDFTools from "./components/PDFTools";
+import ImageTools from "./components/ImageTools";
+import Footer from "./components/Footer";
 
-function App() {
+// Hooks
+import { useDarkMode } from "./hooks/useDarkMode";
+import { useActiveSection } from "./hooks/useActiveSection";
+
+// Tool pages
+import PdfSplit from "./components/tools/pdf/pdfsplit";
+import ImgToPdf from "./components/tools/pdf/imgtopdf";
+
+const App: React.FC = () => {
   const [darkMode, setDarkMode] = useDarkMode();
   const [activeSection, setActiveSection] = useActiveSection();
 
   return (
     <Router>
-      <div className={`min-h-screen transition-colors duration-300 ${
-        darkMode ? 'bg-gray-900' : 'bg-white'
-      }`}>
-        <Header 
-          darkMode={darkMode} 
+      <div
+        className={`min-h-screen transition-colors duration-300 ${
+          darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+        }`}
+      >
+        {/* Header */}
+        <Header
+          darkMode={darkMode}
           setDarkMode={setDarkMode}
           activeSection={activeSection}
           setActiveSection={setActiveSection}
         />
-        
+
+        {/* Routes */}
         <main>
           <Routes>
-            {/* Main page route */}
-            <Route path="/" element={
-              <>
-                <Hero 
-                  darkMode={darkMode}
-                  setActiveSection={setActiveSection}
-                />
-                <PDFTools darkMode={darkMode} />
-                <ImageTools darkMode={darkMode} />
-              </>
-            } />
-            
-            {/* PDF Tool routes */}
-            <Route path="/tools/pdf/PDFSplit" element={<PdfSplit darkMode={darkMode} />} />
+            {/* Landing page */}
+            <Route
+              path="/"
+              element={
+                <>
+                  <Hero
+                    darkMode={darkMode}
+                    setActiveSection={setActiveSection}
+                  />
+                  <PDFTools darkMode={darkMode} />
+                  <ImageTools darkMode={darkMode} />
+                </>
+              }
+            />
 
-            
+            {/* PDF tools */}
+            <Route
+              path="/tools/pdf/split"
+              element={<PdfSplit darkMode={darkMode} />}
+            />
+            <Route
+              path="/tools/pdf/from-images"
+              element={<ImgToPdf darkMode={darkMode} />}
+            />
           </Routes>
         </main>
-        
-        <Footer 
+
+        {/* Footer */}
+        <Footer
           darkMode={darkMode}
           setActiveSection={setActiveSection}
         />
       </div>
     </Router>
   );
-}
+};
 
 export default App;

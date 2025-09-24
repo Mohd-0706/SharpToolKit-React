@@ -76,11 +76,8 @@ const Footer: React.FC<FooterProps> = ({ darkMode, setActiveSection }) => {
         <div className={`pt-8 border-t flex flex-col sm:flex-row justify-between items-center ${
           darkMode ? 'border-gray-800' : 'border-gray-200'
         }`}>
-          <p className={`text-sm mb-4 sm:mb-0 ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-            Sharp Toolkit.
-          </p>
-          <div className={`flex items-center text-sm ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
-            Made with <Heart className="h-4 w-4 mx-1 text-red-500" /> by the Sharp Toolkit team
+          <div className={`flex items-center text-lg ${darkMode ? 'text-gray-400' : 'text-gray-500'}`}>
+            This SharpToolKit developed by  <Heart className="h-4 w-4 mx-1 text-red-500" /> MineCrafted Code
           </div>
         </div>
       </div>

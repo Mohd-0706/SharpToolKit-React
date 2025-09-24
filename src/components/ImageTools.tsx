@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Crop, RotateCw, Maximize as Resize, Palette, Filter, Contrast, Copyright as Brightness6, Compass as Compress, FileImage, Scissors, Grid3X3, Layers, Eye, Download, Upload } from 'lucide-react';
+import { Image, Crop, RotateCw, Maximize as Resize, Palette, Filter, Contrast, Copyright as Brightness6, Compass as Compress, FileImage, Scissors, Grid3X3, Layers, Eye, Download, Upload, } from 'lucide-react';
 import ToolCard from './ToolCard';
 
 interface ImageToolsProps {
