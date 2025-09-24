@@ -114,25 +114,7 @@ const About: React.FC<AboutProps> = ({ darkMode }) => {
           ))}
         </div>
 
-        {/* Mission Statement */}
-        <div className={`text-center p-8 sm:p-12 rounded-2xl ${
-          darkMode 
-            ? 'bg-gradient-to-r from-gray-800 to-gray-700' 
-            : 'bg-gradient-to-r from-blue-50 to-teal-50'
-        }`}>
-          <h3 className={`text-2xl sm:text-3xl font-bold mb-4 ${
-            darkMode ? 'text-white' : 'text-gray-900'
-          }`}>
-            Our Mission
-          </h3>
-          <p className={`text-lg sm:text-xl max-w-4xl mx-auto leading-relaxed ${
-            darkMode ? 'text-gray-300' : 'text-gray-700'
-          }`}>
-            To provide everyone with access to professional-grade document and image processing tools, 
-            completely free, without compromising on privacy or quality. We believe powerful tools 
-            shouldn't be locked behind paywalls or require complex software installations.
-          </p>
-        </div>
+        
       </div>
     </section>
   );
