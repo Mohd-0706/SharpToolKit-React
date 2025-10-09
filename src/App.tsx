@@ -15,6 +15,8 @@ import { useActiveSection } from "./hooks/useActiveSection";
 // Tool pages
 import PdfSplit from "./components/tools/pdf/pdfsplit";
 import ImgToPdf from "./components/tools/pdf/imgtopdf";
+import PdfToImages from './components/tools/pdf/pdftoimg';
+import MergePdf from "./components/tools/pdf/MergePdf";
 
 const App: React.FC = () => {
   const [darkMode, setDarkMode] = useDarkMode();
@@ -55,13 +57,22 @@ const App: React.FC = () => {
 
             {/* PDF tools */}
             <Route
-              path="/tools/pdf/pdfsplit"
+              path="/tools/pdf/split"
               element={<PdfSplit darkMode={darkMode} />}
             />
             <Route
               path="/tools/pdf/from-images"
               element={<ImgToPdf darkMode={darkMode} />}
             />
+            <Route 
+              path="/tools/pdf/pdftoimg" 
+              element={<PdfToImages darkMode={darkMode} />} 
+            />
+            <Route
+    path="/tools/pdf/merge" // Add this route
+    element={<MergePdf darkMode={darkMode} />}
+  />
+
           </Routes>
         </main>
 
